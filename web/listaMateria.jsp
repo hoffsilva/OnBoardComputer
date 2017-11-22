@@ -19,7 +19,7 @@
     <h3 class="text-muted"></h3>
 </div>
 <div class="container">
-    <jsp:include page="menu.jsp"/>
+      <jsp:include page="menu.jsp"/>
   <div class="header clearfix">
     <h3 class="text-muted">2ª Avaliação - 2º Semestre</h3>
   </div>
@@ -28,30 +28,7 @@
     <h1 class="display-5">Hoff Silva - 21652435</h1>
     <p></p>
     <p></p>
-    <h3 class="display-5">Cadastro de Matéria</h3>
-    <form action="Controller" method="POST">
-      <div class="form-group">
-        <label for="">Digite o Nome da Matéria</label>
-        <input class="form-control" type="text" name="nomeMateria" placeholder="Nome da Materia">
-      </div>
-      <div class="form-group">
-          
-       <div class="form-group">
-        <label for="">Digite o Nome do Curso</label>
-        <input class="form-control" type="text" name="nomeCurso" placeholder="Nome do Curso">
-      </div>
-          
-          <div class="form-group">
-            <label for="">Selecione o Tipo da Matéria (Presencial ou EAD)</label>
-            <select class="form-control" id="tipoDeMateria" name="tipoDeMateria">
-                <option value="Presencial">Presencial</option>
-                <option value="EAD">EAD</option>
-            </select>
-        </div>
-      <div class="form-group">
-        <input type="submit" value="Cadastrar" class="btn btn-primary">
-      </div>
-    </form>
+    <h3 class="display-5">Lista de Matérias</h3>
   </div>
 
   <div class="table-responsive">

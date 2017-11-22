@@ -38,14 +38,19 @@ public class Controller extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        response.setContentType("text/html;charset=UTF-8");
+        
         String nomeMateria = null;
         String nomeCurso = null;
         Curso curso = null;
         EAD ead = null;
         Presencial presencial = null;
         try {
+            
+            if (request.getParameter("listarMaterias") != null) {
+                RequestDispatcher resultado = request.getRequestDispatcher("listaMateria.jsp");
+                resultado.forward(request, response);
+            } else {
+            
             //pegando as informacoes da tela
             nomeMateria = request.getParameter("nomeMateria");
             nomeCurso = request.getParameter("nomeCurso");
@@ -53,27 +58,30 @@ public class Controller extends HttpServlet {
 
             if (request.getParameter("tipoDeMateria").equals("EAD")) {
                 //populando no objeto
-                ead = new EAD(10, nomeMateria, CursoService.insere(curso));
+                ead = new EAD(1, nomeMateria, CursoService.insere(curso));
                 //inserindo no banco de dados
-                //recuperando do banco de dados
                 ead = MateriaService.insereEAD(ead);
-                request.setAttribute("materia", ead);
                 presencial = null;
+                 //devolvendo para a tela.
+                request.setAttribute("ead", ead);
             } else if (request.getParameter("tipoDeMateria").equals("Presencial")) {
                 //populando no objeto
-                presencial = new Presencial(10, nomeMateria, CursoService.insere(curso));
+                presencial = new Presencial(2, nomeMateria, CursoService.insere(curso));
+                System.out.println(presencial);
                 //inserindo no banco de dados
-                //recuperando do banco de dados
                 presencial = MateriaService.inserePresencial(presencial);
-                request.setAttribute("materia", presencial);
                 ead = null;
+                System.out.println(presencial.toString());
+                 //devolvendo para a tela.
+                request.setAttribute("presencial", presencial);
             }
 
+        }
         } catch (NumberFormatException e) {
 
         }
+       
         //devolvendo para a tela.
-
         RequestDispatcher resultado = request.getRequestDispatcher("index.jsp");
         resultado.forward(request, response);
 

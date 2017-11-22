@@ -16,21 +16,22 @@ public class EAD extends Materia{
     
     private int codigo;
 
-    public EAD(int sala) {
-        this.codigo = sala;
-    }
-
-    public EAD(int sala, String nome, Curso curso) {
+    public EAD(int codigo, String nome, Curso curso) {
         super(nome, curso);
-        this.codigo = sala;
+        this.codigo = codigo;
     }
 
-    public int getSala() {
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setSala(int sala) {
-        this.codigo = sala;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    @Override
+    public String toString() {
+        return "EAD";
     }
     
     

@@ -51,13 +51,5 @@ public class Materia {
 
     public void setCurso(Curso curso) {
         this.curso = curso;
-    }
-
-    @Override
-    public String toString() {
-        return "Materia{" + "id=" + id + ", nome=" + nome + ", curso=" + curso + '}';
-    }
-    
-    
-    
+    } 
 }

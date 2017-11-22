@@ -50,10 +50,4 @@ public class Curso {
     public void setMateria(List<Materia> materia) {
         this.materia = materia;
     }
-
-    @Override
-    public String toString() {
-        return "Curso{" + "id=" + id + ", nome=" + nome + ", materia=" + materia + '}';
-    }
-    
 }

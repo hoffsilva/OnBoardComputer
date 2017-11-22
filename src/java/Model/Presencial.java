@@ -16,10 +16,6 @@ public class Presencial extends Materia{
 
     private int codigo;
 
-    public Presencial(int codigo) {
-        this.codigo = codigo;
-    }
-
     public Presencial(int codigo, String nome, Curso curso) {
         super(nome, curso);
         this.codigo = codigo;
@@ -32,6 +28,13 @@ public class Presencial extends Materia{
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
+
+    @Override
+    public String toString() {
+        return "Presencial";
+    }
+    
+    
 
    
 }
