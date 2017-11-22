@@ -13,10 +13,14 @@ import javax.persistence.*;
  */
 @Entity
 public class Curso {
+    
+    //identificador da entidade, atributo obrigatório e auto gerado
     @Id
     @GeneratedValue
     private int id;
+    //nome
     private String nome;
+    //atributo do relacionamento OneToMany. Este relacionamento obriga que este atributo seja uma Lista. Este atributo significa que UM curso possui VÁRIAS matérias.
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Materia> materia;
 

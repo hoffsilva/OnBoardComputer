@@ -23,17 +23,27 @@ public class MateriaService {
     
     
     public static EAD insereEAD(EAD materia) {
+        //atributos de métodos
+        //sessao de conexao com o banco de dados
         SessionFactory sf = null;
         Session session = null;
+        //objeto temporario do tipo EAD
         EAD localEAD = null;
+        //objeto temporario do tipo Presencial
         Presencial presencial = null;
         
         try {
+            //pegando a sessao la do hibernate util que utiliza os dados do hibernate config
             sf = HibernateUtil.getSessionFactory();
+            //abrindo a conexao
             session = sf.openSession();
+            //iniciando a transacao no banco de dados
             session.beginTransaction();
+            //salvando o objeto no banco de dados
             session.save(materia);
+            //confirmando a transacao
             session.getTransaction().commit();
+            //utilizando a materia inserida no banco de dados para devolve-la para a tela
             localEAD = materia;
         } catch (Exception e) {
             e.printStackTrace();
@@ -41,12 +51,14 @@ public class MateriaService {
                 session.getTransaction().rollback();
         } finally {
             if (session != null)
+                //encerrando a sessao.
                 session.close();
         }
-        
+        //devolvendo a materia para a tela
         return localEAD;
     }
     
+    //este método tem o mesmo comportamento do insereEAD, mas utiliza a materia do tipo Presencial
     public static Presencial inserePresencial(Presencial materia) {
         SessionFactory sf = null;
         Session session = null;

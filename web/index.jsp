@@ -52,6 +52,11 @@
         <input type="submit" value="Cadastrar" class="btn btn-primary">
       </div>
     </form>
+    <form action="Controller" method="POST">
+      <div class="form-group">
+        <input type="submit" value="Listar" class="btn btn-primary">
+      </div>
+    </form>
   </div>
 
   <div class="table-responsive">

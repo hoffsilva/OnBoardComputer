@@ -9,8 +9,7 @@ public class HibernateUtil {
 
     static {
         try {
-            // Create the SessionFactory from standard (hibernate.cfg.xml)
-            // config file.
+            // Arquivo que utiliza as configuracoes do hibernate cfg pra criar a conexao com o banco de dados
             sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
         } catch (Throwable ex) {
             // Log the exception.

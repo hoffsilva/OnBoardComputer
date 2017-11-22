@@ -14,10 +14,12 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Materia {
     
+    //identificador da entidade, atributo obrigatório e auto gerado
     @Id
     @GeneratedValue
     private int id;
     private String nome;
+    //atributo do relacionamento ManyToOne. Este atributo significa que UM curso possui VÁRIAS matérias.
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Curso curso;
 

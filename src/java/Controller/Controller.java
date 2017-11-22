@@ -46,37 +46,41 @@ public class Controller extends HttpServlet {
         Presencial presencial = null;
         try {
             
-            if (request.getParameter("listarMaterias") != null) {
-                RequestDispatcher resultado = request.getRequestDispatcher("listaMateria.jsp");
-                resultado.forward(request, response);
-            } else {
-            
             //pegando as informacoes da tela
+            
+            //pega o valor do cmapo de texto com nome: "nomeMateria"
             nomeMateria = request.getParameter("nomeMateria");
+            //pega o valor do cmapo de texto com nome: "nomeCurso"
             nomeCurso = request.getParameter("nomeCurso");
+            
+            //criando o curos com a informacao vinda da tela 
             curso = new Curso(nomeCurso);
 
+            
+            //verifica se o valor do select chamado "tipoDeMateria" é EAD
+            
             if (request.getParameter("tipoDeMateria").equals("EAD")) {
-                //populando no objeto
+                //cria o objeto EAD
                 ead = new EAD(1, nomeMateria, CursoService.insere(curso));
-                //inserindo no banco de dados
+                //inserindo no banco de dados - USANDO O HIBERNATE
                 ead = MateriaService.insereEAD(ead);
+                //colocando o objeto presencial como null apenas por seguranca pra nao ter problemas na verificacao de exsitencia.
                 presencial = null;
                  //devolvendo para a tela.
                 request.setAttribute("ead", ead);
+                //verifica se o valor do select chamado "tipoDeMateria" é Presencial
             } else if (request.getParameter("tipoDeMateria").equals("Presencial")) {
-                //populando no objeto
+                //cria o objeto Presencial
                 presencial = new Presencial(2, nomeMateria, CursoService.insere(curso));
-                System.out.println(presencial);
-                //inserindo no banco de dados
+                //inserindo no banco de dados - USANDO O HIBERNATE
                 presencial = MateriaService.inserePresencial(presencial);
+                //colocando o objeto ead como null apenas por seguranca pra nao ter problemas na verificacao de exsitencia.
                 ead = null;
-                System.out.println(presencial.toString());
                  //devolvendo para a tela.
                 request.setAttribute("presencial", presencial);
             }
 
-        }
+        
         } catch (NumberFormatException e) {
 
         }
